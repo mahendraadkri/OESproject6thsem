@@ -6,8 +6,10 @@ use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\NoticeController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\UserController;
+use App\Http\Controllers\PagesController;
 use Illuminate\Foundation\Application;
 use Inertia\Inertia;
+
 
 /*
 |--------------------------------------------------------------------------
@@ -19,10 +21,22 @@ use Inertia\Inertia;
 | be assigned to the "web" middleware group. Make something great!
 |
 */
+Route::get('/',[PagesController::class,'home'])->name('home');
+
+Route::get('/viewproduct/{product}',[PagesController::class,'viewproduct'])->name('viewproduct');
+
+Route::get('/userlogin',[PagesController::class,'userlogin'])->name('userlogin');
+
+Route::get('/userregister',[UserController::class,'userregister'])->name('user.register');
+
+Route::post('/userregister',[UserController::class,'userstore'])->name('user.register');
+
 
 Route::get('/', function () {
     return view('welcome');
 });
+
+
 
 Route::get('/dashboard', function () {
     return view('dashboard');

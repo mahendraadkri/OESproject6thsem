@@ -32,6 +32,7 @@
       <link rel="stylesheet" href="css/owl.theme.default.min.css">
       <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/2.1.5/jquery.fancybox.min.css" media="screen">
       <link href="https://unpkg.com/gijgo@1.9.13/css/gijgo.min.css" rel="stylesheet" type="text/css" />
+      
    </head>
    <body>
       <!-- header section start -->
@@ -47,13 +48,14 @@
                   <a href="contact.html">Contact</a>
                </div>
                <span style="font-size:30px;cursor:pointer; color: #fff;" onclick="openNav()"><img src="images/toggle-icon.png"></span>
-               <a class="navbar-brand" href="index.html"><img src="images/logo.png"></a></a>
+               <a class="navbar-brand" href="index.html"><img src="images/logo.png" height="30px" style="object-fit:cover;width:150px "></a></a>
                <form class="form-inline ">
                   <div class="login_text">
                      <ul>
-                        <li><a href="userlogin"><img src="images/user-icon.png"></a></li>
+                        <span><li><a href="{{route('userlogin')}}"><img src="images/user-icon.png"></a></li></span>
                         <li><a href="#"><img src="images/trolly-icon.png"></a></li>
                         <li><a href="#"><img src="images/search-icon.png"></a></li>
+                        
                      </ul>
                   </div>
                </form>
@@ -74,7 +76,7 @@
                         <div class="col-md-4">
                            <h1 class="banner_taital">Big Sale Offer</h1>
                            <div class="buynow_bt active"><a href="#">Buy Now</a></div>
-                           <div class="contact_bt"><a href="contact.html">Contact Us</a></div>
+                           <div class="contact_bt"><a href="#">Contact Us</a></div>
                         </div>
                         <div class="col-md-4">
                            <div class="image_2"><img src="images/img-2.png" style="width:100%"></div>
@@ -124,14 +126,16 @@
               <i class="fa fa-angle-right"></i>
             </a>
          </div>
+         
       </div>
+      
       <!-- banner section end -->
       <!-- catagary section start -->
       <div class="catagary_section layout_padding">
          <div class="container">
             <div class="catagary_main">
                <div class="catagary_left">
-                  <h2 class="categary_text">Categary</h2>
+                  <h2 class="categary_text">Categories</h2>
                </div>
                <div class="catagary_right">
                   <div class="catagary_menu">
@@ -193,58 +197,13 @@
          </div>
       </div>
       <!-- catagary section end -->
-      <!-- computers section start -->
-      <div class="computers_section layout_padding">
-         <div class="container">
-            <h1 class="computers_taital">Computers & Laptop</h1>
-         </div>
-      </div>
-      <div class="computers_section_2">
-         <div class="container-fluid">
-            <div class="computer_main">
-               <div class="row">
-                  <div class="col-md-4">
-                     <div class="computer_img"><img src="images/computer-img.png"></div>
-                     <h4 class="computer_text">COMPUTER</h4>
-                     <div class="computer_text_main">
-                        <h4 class="dell_text">Samsung</h4>
-                        <h6 class="price_text"><a href="#">$500</a></h6>
-                        <h6 class="price_text_1"><a href="#">$1000</a></h6>
-                     </div>
-                     <div class="cart_bt_1"><a href="#">Add To Cart</a></div>
-                  </div>
-                  <div class="col-md-4">
-                     <div class="computer_img"><img src="images/laptop-img.png"></div>
-                     <h4 class="computer_text">LAPTOP</h4>
-                     <div class="computer_text_main">
-                        <h4 class="dell_text">Dell</h4>
-                        <h6 class="price_text"><a href="#">$500</a></h6>
-                        <h6 class="price_text_1"><a href="#">$1000</a></h6>
-                     </div>
-                     <div class="cart_bt_1"><a href="#">Add To Cart</a></div>
-                  </div>
-                  <div class="col-md-4">
-                     <div class="computer_img"><img src="images/mac-img.png"></div>
-                     <h4 class="computer_text">macOS</h4>
-                     <div class="computer_text_main">
-                        <h4 class="dell_text">Apple</h4>
-                        <h6 class="price_text"><a href="#">$500</a></h6>
-                        <h6 class="price_text_1"><a href="#">$1000</a></h6>
-                     </div>
-                     <div class="cart_bt_1"><a href="#">Add To Cart</a></div>
-                  </div>
-               </div>
-            </div>
-         </div>
-      </div>
-      <!-- computers section end -->
-    
+      
      
       <!-- footer section start -->
       <div class="footer_section layout_padding margin_top_90">
          <div class="container">
             <div class="footer_logo_main">
-               <div class="footer_logo"><a href="index.html"><img src="images/footer-logo.png"></a></div>
+               <div class="footer_logo"><a href=""><img src="images/logo.png" height="30px" style="object-fit:cover;width:150px " ></a></div>
                <div class="social_icon">
                   <ul>
                      <li><a href="#"><img src="images/fb-icon.png"></a></li>

@@ -32,9 +32,9 @@ Route::get('/userregister',[UserController::class,'userregister'])->name('user.r
 Route::post('/userregister',[UserController::class,'userstore'])->name('user.register');
 
 
-Route::get('/', function () {
-    return view('welcome');
-});
+// Route::get('/', function () {
+//     return view('welcome');
+// });
 
 
 
@@ -42,7 +42,12 @@ Route::get('/dashboard', function () {
     return view('dashboard');
 })->middleware(['auth', 'verified','isadmin'])->name('dashboard');
 
-Route::middleware('auth')->group(function () {
+Route::middleware(['auth'])->group(function(){
+    Route::get('/mycart',[CartController::class,'index'])->name('cart.index');
+    Route::post('/mycart/store',[CartController::class,'store'])->name('cart.store');
+});
+
+Route::middleware(['auth','isadmin'])->group(function () {
     //route of category
     Route::get('/category',[CategoryController::class,'index'])-> name('category.index');
     Route::get('/category/create',[CategoryController::class,'create'])->name('category.create');

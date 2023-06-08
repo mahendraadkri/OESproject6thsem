@@ -10,7 +10,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta http-equiv="X-UA-Compatible" content="ie=edge">
-<title>This is title</title>
+<title>Online Electronic Store</title>
 <link rel="stylesheet" href="{{asset('mycss/style.css')}}">
 <link href="https://cdn.jsdelivr.net/npm/remixicon@2.2.0/fonts/remixicon.css" rel="stylesheet">
 <script src="{{asset('datatable/jquery-3.6.0.js')}}"></script>
@@ -27,7 +27,7 @@
                   @csrf
                   <button type="submit"> Logout</button>
               </form>
-              <a href="{{route('cart.index')}}"> My Cart</a>
+              
           </div>
           @else
           
@@ -49,8 +49,14 @@
 
     <ul class="md:flex md:items-center z-[-1] md:z-auto md:static absolute bg-white w-full left-0 md:w-auto md:py-0 py-4 md:pl-0 pl-7 md:opacity-100 opacity-0 top-[-400px] transition-all ease-in duration-500">
       <li class="mx-4 my-6 md:my-0">
-        <a href="#" class="text-xl hover:text-cyan-500 duration-500">HOME</a>
+        <a href="/" class="text-xl hover:text-cyan-500 duration-500">HOME</a>
       </li>
+       @foreach($categories as $category)
+      <li class="mx-4 my-6 md:my-0"><a href="/">{{$category->name}}</a></li>
+      @endforeach 
+     
+
+     
       
     
 
@@ -159,12 +165,10 @@ class="bg-neutral-100 text-center text-neutral-600 dark:bg-neutral-600 dark:text
           <path
             d="M12.378 1.602a.75.75 0 00-.756 0L3 6.632l9 5.25 9-5.25-8.622-5.03zM21.75 7.93l-9 5.25v9l8.628-5.032a.75.75 0 00.372-.648V7.93zM11.25 22.18v-9l-9-5.25v8.57a.75.75 0 00.372.648l8.628 5.033z" />
         </svg>
-        Tailwind ELEMENTS
+        Online Electronic Store
       </h6>
       <p>
-        Here you can use rows and columns to organize your footer
-        content. Lorem ipsum dolor sit amet, consectetur adipisicing
-        elit.
+        We Sell original products...
       </p>
     </div>
     <!-- Products section -->

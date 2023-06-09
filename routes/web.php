@@ -7,6 +7,7 @@ use App\Http\Controllers\NoticeController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\PagesController;
+use App\Http\Controllers\CartController;
 use Illuminate\Foundation\Application;
 use Inertia\Inertia;
 

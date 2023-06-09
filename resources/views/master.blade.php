@@ -27,7 +27,7 @@
                   @csrf
                   <button type="submit"> Logout</button>
               </form>
-              
+              <a href="{{route('cart.index')}}">My Cart</a>
           </div>
           @else
           
@@ -52,7 +52,7 @@
         <a href="/" class="text-xl hover:text-cyan-500 duration-500">HOME</a>
       </li>
        @foreach($categories as $category)
-      <li class="mx-4 my-6 md:my-0"><a href="/">{{$category->name}}</a></li>
+      <li class="mx-4 my-6 md:my-0 text-xl hover:text-cyan-500 duration-500"><a href="/">{{$category->name}}</a></li>
       @endforeach 
      
 

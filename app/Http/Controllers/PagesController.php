@@ -10,7 +10,7 @@ class PagesController extends Controller
 {
 public function home()
 {
-    $products = Product::paginate(4);
+    $products = Product::paginate(8);
     $categories = Category::orderBy('priority')->get();
     return view('welcome',compact('products','categories'));
 }

@@ -12,7 +12,7 @@
             <input type="password" name="password" placeholder="Password" class="w-full px-2 rounded-lg  my-4">
             <input type="password" name="password_confirmation" placeholder="Re-Enter Password" class="w-full px-2 rounded-lg my-4">
             <input type="submit" value="Register" class="w-1/2 block p-2 rounded-lg mx-auto my-4 bg-indigo-600 text-white">
-            <a href="{{route('userlogin')}}">Login Here</a>
+            <a href="{{route('userlogin')}}">Already have account!! Login Here...</a>
         </form>
     </div>
 

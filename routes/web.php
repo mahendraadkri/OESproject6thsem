@@ -48,6 +48,11 @@ Route::middleware(['auth'])->group(function(){
     Route::post('/mycart/store',[CartController::class,'store'])->name('cart.store');
 });
 
+Route::middleware(['auth'])->group(function(){
+    Route::get('/mywishlist',[CartController::class,'index'])->name('wishlist.index');
+    Route::post('/mywishlist/store',[CartController::class,'store'])->name('wishlist.store');
+});
+
 Route::middleware(['auth','isadmin'])->group(function () {
     //route of category
     Route::get('/category',[CategoryController::class,'index'])-> name('category.index');

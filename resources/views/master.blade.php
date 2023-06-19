@@ -52,9 +52,10 @@
       <li class="mx-4 my-6 md:my-0">
         <a href="/" class="text-xl hover:text-cyan-500 duration-500">HOME</a>
       </li>
-       @foreach($categories as $category)
-      <li class="mx-4 my-6 md:my-0 text-xl hover:text-cyan-500 duration-500"><a href="/">{{$category->name}}</a></li>
-      @endforeach 
+      @foreach($categories as $category)
+            <li class="mx-4 my-6 md:my-0 text-xl hover:text-cyan-500 duration-500"><a href="{{route('categoryproduct',$category->id)}}">{{$category->name}}</a></li>
+      @endforeach
+       
 
       
      
@@ -336,7 +337,7 @@ class="bg-neutral-100 text-center text-neutral-600 dark:bg-neutral-600 dark:text
         Products
       </h6>
       <p class="mb-4">
-        <a href="#!" class="text-neutral-600 dark:text-neutral-200"
+        <a href="/welcome" class="text-neutral-600 dark:text-neutral-200"
           >Angular</a
         >
       </p>

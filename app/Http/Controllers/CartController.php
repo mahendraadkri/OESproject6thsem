@@ -13,9 +13,17 @@ class CartController extends Controller
      */
     public function index()
     {
+        if(!auth()->user())
+        {
+            $itemsincart = 0;
+        }
+        else
+        {
+            $itemsincart = Cart::where('user_id',auth()->user()->id)->count();
+        }
         $categories = Category::orderBy('priority')->get();
         $carts = Cart::where('user_id',auth()->user()->id)->get();
-        return view('viewcart',compact('carts','categories'));
+        return view('viewcart',compact('carts','categories','itemsincart'));
     }
 
     /**

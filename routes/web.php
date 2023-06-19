@@ -28,9 +28,12 @@ Route::get('/viewproduct/{product}',[PagesController::class,'viewproduct'])->nam
 
 Route::get('/userlogin',[PagesController::class,'userlogin'])->name('userlogin');
 
+Route::get('/categoryproduct/{id}',[PagesController::class,'categoryproduct'])->name('categoryproduct');
+
 Route::get('/userregister',[UserController::class,'userregister'])->name('user.register');
 
 Route::post('/userregister',[UserController::class,'userstore'])->name('user.register');
+
 
 
 // Route::get('/', function () {
@@ -55,12 +58,14 @@ Route::middleware(['auth'])->group(function(){
 
 Route::middleware(['auth','isadmin'])->group(function () {
     //route of category
-    Route::get('/category',[CategoryController::class,'index'])-> name('category.index');
+    Route::get('/category',[CategoryController::class,'index'])->name('category.index');
     Route::get('/category/create',[CategoryController::class,'create'])->name('category.create');
     Route::post('/category/store',[CategoryController::class,'store'])->name('category.store');
     Route::get('/category/{id}/edit',[CategoryController::class,'edit'])->name('category.edit');
     Route::post('/category/{id}/update',[CategoryController::class,'update'])->name('category.update');
-    Route::get('/category/{id}/destroy',[CategoryController::class,'destroy'])->name('category.destroy');
+    // Route::get('/category/{id}/destroy',[CategoryController::class,'destroy'])->name('category.destroy');
+    Route::post('/category/destroy',[CategoryController::class,'destroy'])->name('category.destroy');
+
 
      //notice
      Route::get('/notice',[NoticeController::class,'index'])->name('notice.index');

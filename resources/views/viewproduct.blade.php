@@ -38,4 +38,37 @@
         <p>{{$product->description}}</p>
     </div>
 
+    <div class="px-44 my-10">
+        <h2 class="font-bold text-2xl">Related Product</h2>
+
+        {{-- <div class="grid grid-cols-4 gap-10 px-24 mb-10">
+
+            @foreach($relatedproducts as $relatedproduct)
+            <a href="{{route('viewproduct',$relatedproduct->id)}}">
+                <div class="bg-gray-100 rounded-lg shadow-lg relative">
+                    <img src="{{asset('images/products/'.$relatedproduct->photopath)}}" alt="" class="w-full h-72 object-cover rounded-t-lg">
+                    <div class="p-2">
+                        <p class="font-bold text-2xl">{{$relatedproduct->name}}</p>
+                        <p class="font-bold text-2xl">
+                            @if($relatedproduct->oldprice != '')
+                            <span class="line-through text-gray-500 text-xl">{{$relatedproduct->oldprice}}/-</span> 
+                            @endif
+                            Rs. {{$relatedproduct->price}}/-</p>
+                    </div>
+                    @if($relatedproduct->oldprice != '')
+                    @php
+                        $discount = ($relatedproduct->oldprice - $relatedproduct->price) / $relatedproduct->oldprice * 100;
+                        $discount = round($discount);
+                    @endphp
+                    <p class="absolute top-1 right-1 bg-blue-600 text-white rounded-lg px-4 py-1">{{$discount}}% off</p>
+                    @endif
+                </div>
+            </a>
+            @endforeach
+        </div> --}}
+    </div>
+
+        
+    </div>
+
 @endsection

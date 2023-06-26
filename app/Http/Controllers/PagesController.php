@@ -30,6 +30,7 @@ class PagesController extends Controller
 
     public function about()
     {
+
         return view('about');
     }
 
@@ -38,7 +39,9 @@ class PagesController extends Controller
         $itemsincart = $this->include();
         // $product = Product::find($id);
         $categories = Category::orderBy('priority')->get();
-        return view('viewproduct',compact('product','categories','itemsincart'));
+        $relatedproducts = Product::where('category_id','=',$product->category_id)->where('id','!=',$product->id)->get();
+       
+        return view('viewproduct',compact('product','categories','itemsincart','relatedproducts'));
     }
 
 

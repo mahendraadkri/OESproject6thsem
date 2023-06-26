@@ -41,7 +41,7 @@
     <div class="px-44 my-10">
         <h2 class="font-bold text-2xl">Related Product</h2>
 
-        {{-- <div class="grid grid-cols-4 gap-10 px-24 mb-10">
+        <div class="grid grid-cols-4 gap-10 px-24 mb-10">
 
             @foreach($relatedproducts as $relatedproduct)
             <a href="{{route('viewproduct',$relatedproduct->id)}}">
@@ -65,7 +65,7 @@
                 </div>
             </a>
             @endforeach
-        </div> --}}
+        </div>
     </div>
 
         

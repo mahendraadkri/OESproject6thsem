@@ -39,7 +39,7 @@ class PagesController extends Controller
         $itemsincart = $this->include();
         // $product = Product::find($id);
         $categories = Category::orderBy('priority')->get();
-        $relatedproducts = Product::where('category_id','=',$product->category_id)->where('id','!=',$product->id)->get();
+        $relatedproducts = Product::where('category_id',$product->category_id)->whereNot('id',$product->id)->get();
        
         return view('viewproduct',compact('product','categories','itemsincart','relatedproducts'));
     }

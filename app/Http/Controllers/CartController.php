@@ -19,11 +19,20 @@ class CartController extends Controller
         }
         else
         {
-            $itemsincart = Cart::where('user_id',auth()->user()->id)->count();
+            
+        $itemsincart = Cart::where('user_id',auth()->user()->id)->where('is_ordered',false)->count();
         }
+
         $categories = Category::orderBy('priority')->get();
-        $carts = Cart::where('user_id',auth()->user()->id)->get();
-        return view('viewcart',compact('carts','categories','itemsincart'));
+        $carts =Cart::where('user_id',auth()->user()->id)->where('is_ordered',false)->get();
+        $totalamount = 0;
+        foreach($carts as $cart)
+        {
+            $total = $cart->qty * $cart->product->price;
+            $cart->subtotal = $total;
+            $totalamount += $total;
+        }
+        return view('viewcart',compact('carts','categories','itemsincart','totalamount'));
     }
 
     /**
@@ -40,22 +49,25 @@ class CartController extends Controller
     public function store(Request $request)
     {
         $data = $request->validate([
-            'qty' => 'required',
-            'product_id' => 'required',
+            'qty' =>'required',
+            'product_id'=>'required',
         ]);
-
         $data['user_id'] = auth()->user()->id;
 
-        //check if already exist
-        $check = Cart::where('product_id',$data['product_id'])->where('user_id',$data['user_id'])->count();
+        
+         //check if already exist
+        $check = Cart::where('product_id',$data['product_id'])->where('user_id',$data
+        ['user_id'])->where('is_ordered',false)->count();
         if($check > 0)
         {
-            return back()->with('success','Item already in Cart');
+            return back()->with('success','item already in Cart');
         }
 
         Cart::create($data);
-        return back()->with('success','Item added to Cart');
+        return back()->with('success','item added to cart');
     }
+
+    
 
     /**
      * Display the specified resource.
@@ -87,5 +99,20 @@ class CartController extends Controller
     public function destroy(Cart $cart)
     {
         //
+    }
+
+    public function checkout()
+    {
+        if(!auth()->user())
+        {
+            $itemsincart = 0;
+        }
+        else
+       {
+        $itemsincart = Cart::where('user_id',auth()->user()->id)->count();
+
+       }
+       $categories = Category::orderBy('priority')->get();
+       return view('checkout',compact('categories','itemsincart'));
     }
 }

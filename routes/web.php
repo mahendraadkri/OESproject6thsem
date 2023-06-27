@@ -8,6 +8,7 @@ use App\Http\Controllers\ProductController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\PagesController;
 use App\Http\Controllers\CartController;
+use App\Http\Controllers\OrderController;
 use Illuminate\Foundation\Application;
 use Inertia\Inertia;
 
@@ -52,6 +53,11 @@ Route::middleware(['auth'])->group(function(){
 });
 
 Route::middleware(['auth'])->group(function(){
+    Route::get('/mycart',[CartController::class,'index'])->name('cart.index');
+    Route::post('/mycart/store',[CartController::class,'store'])->name('cart.store');
+    Route::post('/order/store',[OrderController::class,'store'])->name('order.store');
+    Route::get('/checkout',[CartController::class,'checkout'])->name('cart.checkout');
+    Route::get('/myorders',[PagesController::class,'orders'])->name('user.order');
     Route::get('/mywishlist',[CartController::class,'index'])->name('wishlist.index');
     Route::post('/mywishlist/store',[CartController::class,'store'])->name('wishlist.store');
 });

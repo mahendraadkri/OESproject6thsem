@@ -89,6 +89,13 @@ Route::middleware(['auth','isadmin'])->group(function () {
     Route::get('/product/{id}/edit',[ProductController::class,'edit'])->name('product.edit');
     Route::post('/product/{id}/update',[ProductController::class,'update'])->name('product.update');
     Route::get('/product/{id}/destroy',[ProductController::class,'destroy'])->name('product.destroy');
+
+     //orders
+     Route::get('/order',[OrderController::class,'index'])->name('order.index');
+     Route::get('/order/{id}/edit',[OrderController::class,'edit'])->name('order.edit');
+     Route::post('/order/{id}/update',[OrderController::class,'update'])->name('order.update');
+     Route::get('/order/status/{id}/{status}',[OrderController::class,'status'])->name('order.status');
+     Route::get('/order/{id}/details',[OrderController::class,'details'])->name('order.details');
     
 
 

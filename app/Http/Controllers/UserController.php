@@ -20,7 +20,7 @@ class UserController extends Controller
         $data = $request->validate([
             'name' => 'required',
             'phone' => 'required',
-            'email' => 'required',
+            'email' => 'required|email:filter',
             'address' => 'required',
             'password' => ['required','confirmed', Rules\Password::defaults()],
         ]);

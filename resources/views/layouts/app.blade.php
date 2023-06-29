@@ -21,7 +21,7 @@
     <body class="font-sans antialiased">
         <div class="flex">
             <div class="w-56 fixed top-0 left-0 bottom-0 bg-gray-200 shadow-lg shadow-red-300">
-                <img class="bg-white mx-4  w-44 my-5 rounded-lg py-3" src="" alt=""  >
+                <img class="h-20 inline" src="images\logo.png">
 
                 <h3>Hello, {{auth()->user()->role}}</h3>
 

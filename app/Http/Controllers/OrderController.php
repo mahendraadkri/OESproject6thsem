@@ -71,14 +71,14 @@ class OrderController extends Controller
         Order::create($data);
         Cart::whereIn('id', $ids)->update(['is_ordered' => true]);
         //mail when order is placed
-        // $data = [
-        //     'name' => auth()->user()->name,
-        //     'mailmessage' => 'New Order has been placed.',
+        $data = [
+            'name' => auth()->user()->name,
+            'mailmessage' => 'New Order has been placed.',
         
-        // ];
-        // Mail::send('email.email',$data, function($message){
-        //     $message->to(auth()->user()->email)->subject('New Order Placed');
-        // });
+        ];
+        Mail::send('email.email',$data, function($message){
+            $message->to(auth()->user()->email)->subject('New Order Placed');
+        });
             
         
 

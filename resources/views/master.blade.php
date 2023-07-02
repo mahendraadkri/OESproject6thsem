@@ -28,7 +28,7 @@
                   <button type="submit"> Logout</button>
               </form>
               <a href="{{route('cart.index')}}"><x-emblem-cart style="width: 20px"/></a>
-              <a href="{{route('wishlist.index')}}"><x-heroicon-s-heart /></a>
+              <a href="{{route('wishlist.index')}}">Wishlist</a>
           </div>
           @else
           
@@ -386,10 +386,12 @@ class="bg-neutral-100 text-center text-neutral-600 dark:bg-neutral-600 dark:text
     </div>
     <!-- Contact section -->
     <div>
-      <h6
-        class="mb-4 flex justify-center font-semibold uppercase md:justify-start">
-        Contact
-      </h6>
+      
+      <a href="contactus" class="text-neutral-600 dark:text-neutral-200"
+          ><h6
+          class="mb-4 flex justify-center font-semibold uppercase md:justify-start">
+          Contact Us
+        </h6></a>
       <p class="mb-4 flex items-center justify-center md:justify-start">
         <svg
           xmlns="http://www.w3.org/2000/svg"

@@ -34,6 +34,12 @@ class PagesController extends Controller
         return view('about');
     }
 
+    public function contactus()
+    {
+
+        return view('contactus');
+    }
+
     public function viewproduct(Product $product)
     {
         $itemsincart = $this->include();

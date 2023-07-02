@@ -25,6 +25,8 @@ use Inertia\Inertia;
 */
 Route::get('/',[PagesController::class,'home'])->name('home');
 
+Route::get('/contactus',[PagesController::class,'contactus'])->name('contactus');
+
 Route::get('/viewproduct/{product}',[PagesController::class,'viewproduct'])->name('viewproduct');
 
 Route::get('/userlogin',[PagesController::class,'userlogin'])->name('userlogin');

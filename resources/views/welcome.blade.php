@@ -13,15 +13,12 @@
             <div class="p-2">
                 <p class="font-bold text-2xl">{{$product->name}}</p>
                 <p class="font-bold text-2xl">
-                    @if ($product->oldprice != '')
-                        
-                    
-                    <span class="line-through text-gray-500 text-xl">Rs.{{$product->oldprice}}/-</span> Rs. {{$product->price}}/-</p>
+                    @if($product->oldprice != '')
+                    <span class="line-through text-gray-500 text-xl">{{$product->oldprice}}/-</span> 
                     @endif
+                    Rs. {{$product->price}}/-</p>
             </div>
-            @if ($product->oldprice != '')
-                
-            
+            @if($product->oldprice != '')
             @php
                 $discount = ($product->oldprice - $product->price) / $product->oldprice * 100;
                 $discount = round($discount);
@@ -31,10 +28,8 @@
         </div>
     </a>
     @endforeach
-    
 </div>
-<div class= "ms-24 my-10">
-    {{$products->links()}}
-</div>
-    
+    <div class="mx-24 my-10">
+        {{$products->links()}}
+    </div>
 @endsection

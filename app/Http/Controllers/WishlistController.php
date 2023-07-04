@@ -17,7 +17,7 @@ class WishlistController extends Controller
     {
         $categories = Category::orderBy('priority')->get();
         $carts = Wishlist::where('user_id',auth()->user()->id)->get();
-        return view('viewcart',compact('carts','categories'));
+        return view('viewwishlist',compact('carts','categories'));
     }
 
     /**
@@ -38,22 +38,31 @@ class WishlistController extends Controller
      */
     public function store(Request $request)
     {
-        $data = $request->validate([
-            'qty' => 'required',
-            'product_id' => 'required',
-        ]);
 
-        $data['user_id'] = auth()->user()->id;
+    $data = $request->data;
+    $product_id = $data->product_id;
+    
 
-        //check if already exist
-        $check = Wishlist::where('product_id',$data['product_id'])->where('user_id',$data['user_id'])->count();
-        if($check > 0)
-        {
-            return back()->with('success','Item already in Cart');
-        }
 
-        Wishlist::create($data);
-        return back()->with('success','Item added to Cart');
+        return response()->json($data);
+
+
+        // $data = $request->validate([
+        //     'qty' => 'required',
+        //     'product_id' => 'required',
+        // ]);
+
+        // $data['user_id'] = auth()->user()->id;
+
+        // //check if already exist
+        // $check = Wishlist::where('product_id',$data['product_id'])->where('user_id',$data['user_id'])->count();
+        // if($check > 0)
+        // {
+        //     return back()->with('success','Item already in Cart');
+        // }
+
+        // Wishlist::create($data);
+        // return back()->with('success','Item added to Cart');
     }
 
     /**

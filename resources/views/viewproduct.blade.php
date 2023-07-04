@@ -26,12 +26,39 @@
 
                     <input type="hidden" name="product_id" value="{{$product->id}}">
                     <button type="submit" class="bg-indigo-600 text-white px-6 py-2 rounded-lg shadow">Add to Cart</button>
+                    <button type="button" class="bg-pink-600 text-white px-6 py-2 rounded-lg shadow" onclick="wishlist({{$product->id}})">Add to Wishlist</button>
                 
             </div>
         </form>
         </div>
     </div>
+    <script> 
+    function wishlist(product_id){
+        const url = "{{route('wishlist.store')}}";
+const data = { data:{
+product_id:product_id
 
+}, _token:"{{csrf_token()}}" };
+
+$.ajax({
+  url: url,
+  type: 'POST',
+  dataType: 'json',
+
+  data: data,
+  success: function(responseData) {
+    // Handle the response data
+    console.log(responseData);
+  },
+  error: function(xhr, status, error) {
+    // Handle any errors
+    console.error('Error:', error);
+  }
+});
+    }
+
+
+    </script>
 
     <div class="px-44 my-10">
         <h2 class="font-bold text-2xl">About this product</h2>

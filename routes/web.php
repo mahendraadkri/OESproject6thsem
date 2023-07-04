@@ -9,6 +9,8 @@ use App\Http\Controllers\UserController;
 use App\Http\Controllers\PagesController;
 use App\Http\Controllers\CartController;
 use App\Http\Controllers\OrderController;
+use App\Http\Controllers\ContactController;
+use App\Http\Controllers\WishlistController;
 use Illuminate\Foundation\Application;
 use Inertia\Inertia;
 
@@ -60,8 +62,15 @@ Route::middleware(['auth'])->group(function(){
     Route::post('/order/store',[OrderController::class,'store'])->name('order.store');
     Route::get('/checkout',[CartController::class,'checkout'])->name('cart.checkout');
     Route::get('/myorders',[PagesController::class,'orders'])->name('user.order');
-    Route::get('/mywishlist',[CartController::class,'index'])->name('wishlist.index');
-    Route::post('/mywishlist/store',[CartController::class,'store'])->name('wishlist.store');
+    Route::get('/mywishlist',[WishlistController::class,'index'])->name('wishlist.index');
+    Route::post('/mywishlist/store',[WishlistController::class,'store'])->name('wishlist.store');
+
+        //route for contact admin
+
+        Route::get('/contact', [ContactController::class, 'index'])->name('contact.index');
+
+        Route::get('/contact/create', [ContactController::class, 'create'])->name('contact.create');
+        Route::post('/contact', [ContactController::class, 'store'])->name('contact.store');
 });
 
 Route::middleware(['auth','isadmin'])->group(function () {

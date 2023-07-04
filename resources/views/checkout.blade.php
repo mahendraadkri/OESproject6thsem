@@ -14,7 +14,10 @@
 
     <select class="p-4 rounded-lg w-full my-2" name="payment_method">
         <option value="COD">Cash On Delivery</option>
+        <option value="COD">E-sewa</option>
+        <option value="COD">Khalti</option>
     </select>
+
 
     <input type="submit" class="bg-blue-600 text-white p-5 rounded w-1/3 mx-auto block mt-5 cursor-pointer" value="Place Order">
 

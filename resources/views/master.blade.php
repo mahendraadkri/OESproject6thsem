@@ -13,6 +13,7 @@
 <title>Online Electronic Store</title>
 <link rel="stylesheet" href="{{asset('mycss/style.css')}}">
 <link href="https://cdn.jsdelivr.net/npm/remixicon@2.2.0/fonts/remixicon.css" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" />
 <script src="{{asset('datatable/jquery-3.6.0.js')}}"></script>
 @vite(['resources/css/app.css', 'resources/js/app.js'])
 </head>
@@ -28,7 +29,7 @@
                   <button type="submit"> Logout</button>
               </form>
               <a href="{{route('cart.index')}}"><x-emblem-cart style="width: 20px"/></a>
-              <a href="{{route('wishlist.index')}}">Wishlist</a>
+              <a href="{{route('wishlist.index')}}"><i class="fa fa-heart" aria-hidden="true"></i></a>
           </div>
           @else
           

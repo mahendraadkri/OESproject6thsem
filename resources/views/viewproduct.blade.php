@@ -49,6 +49,10 @@ $.ajax({
   success: function(responseData) {
     // Handle the response data
     console.log(responseData);
+
+
+
+    window.location.href = "{{route('wishlist.index')}}";
   },
   error: function(xhr, status, error) {
     // Handle any errors

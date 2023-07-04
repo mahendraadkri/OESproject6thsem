@@ -36,8 +36,9 @@ class PagesController extends Controller
 
     public function contactus()
     {
+        $categories = Category::all();
 
-        return view('contactus');
+        return view('contactus',compact('categories'));
     }
 
     public function viewproduct(Product $product)

@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 use App\Models\Contact;
 use App\Models\cart;
+use App\Models\Category;
 use Illuminate\Http\Request;
 
 class ContactController extends Controller
@@ -30,9 +31,10 @@ class ContactController extends Controller
     public function index()
     {
         $contacts=Contact::all();
-        // dd($contacts);
+        $categories= Category::all();
+        //  dd($categories);
 
-        return view('contact.index',compact('contacts'));
+        return view('contact.index',compact('contacts','categories'));
     }
 
     /**
@@ -51,16 +53,12 @@ class ContactController extends Controller
     {
         $data = $request->validate([
             'name'=>'required',
-            'email'=>'required',
+            'email'=>'required|email:filter',
             'message'=>'required',
 
         ]);
-
-       // dd($data); // printing the data 
-        
-
         Contact::create($data);
-        return redirect(route('user.contact'))->with('success','Feedback sent sucessfully!');
+        return redirect(route('contact'))->with('success','Feedback sent sucessfully!');
     }
 
     /**

@@ -40,11 +40,14 @@ class WishlistController extends Controller
     {
 
     $data = $request->data;
-    $product_id = $data->product_id;
-    
+    $product_id = $data['product_id'];
+    $wishlist = [ 
+        'user_id' => auth()->user()->id,
+        'product_id' => $product_id
+    ];
 
-
-        return response()->json($data);
+    Wishlist::create($wishlist);
+        return response()->json("successfully added to Wishlist");
 
 
         // $data = $request->validate([

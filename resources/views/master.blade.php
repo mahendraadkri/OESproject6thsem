@@ -42,7 +42,7 @@
     <div class="flex justify-between items-center ">
       <span class="text-2xl font-[Poppins] cursor-pointer">
         <img class="h-10 inline"
-          src="images\logo.png">
+          src="{{asset('images\logo.png')}}">
         Online Electronic Store
       </span>
 

@@ -53,12 +53,12 @@ class ContactController extends Controller
     {
         $data = $request->validate([
             'name'=>'required',
-            'email'=>'required|email:filter',
-            'message'=>'required',
+            'email'=>'required|email',
+            'text'=>'required',
 
         ]);
         Contact::create($data);
-        return redirect(route('contact'))->with('success','Feedback sent sucessfully!');
+        return redirect(route('contactus'))->with('success','Feedback sent sucessfully!');
     }
 
     /**

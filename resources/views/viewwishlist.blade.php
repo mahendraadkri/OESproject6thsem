@@ -2,7 +2,7 @@
 @section('content')
 @include('layouts.message')
 
-<h1 class="text-center font-bold text-3xl">Items in WishList</h1>
+<h1 class="text-center font-bold text-3xl">Items in Wish</h1>
 
 <div class="grid grid-cols-2 gap-5 px-24">
 @foreach ($carts as $cart)

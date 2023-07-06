@@ -92,6 +92,11 @@ Route::middleware(['auth','isadmin'])->group(function () {
      Route::post('/notice/{id}/update',[NoticeController::class,'update'])->name('notice.update');
      Route::get('/notice/{id}/destroy',[NoticeController::class,'destroy'])->name('notice.destroy');
 
+     //contact
+     Route::get('/contact',[ContactController::class,'index'])->name('contact.index');
+     Route::get('/contact/store',[ContactController::class,'store'])->name('contact.store');
+     Route::get('/contact/destroy',[ContactController::class,'destroy'])->name('contact.destroy');
+
      //product
    
     Route::get('/product',[ProductController::class,'index'])->name('product.index');

@@ -37,14 +37,7 @@ class ContactController extends Controller
         return view('contact.index',compact('contacts','categories'));
     }
 
-    /**
-     * Show the form for creating a new resource.
-     */
-    public function create()
-    {
-        return view('contact.create');
-        
-    }
+
 
     /**
      * Store a newly created resource in storage.
@@ -88,8 +81,10 @@ class ContactController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(Contact $contact)
+    public function destroy(Contact $id)
     {
-        //
+        $contact = Contact::find($id);
+        $contact->delete();
+        return redirect(route('contact.index'));
     }
 }

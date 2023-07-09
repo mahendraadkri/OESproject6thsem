@@ -44,12 +44,19 @@ class ContactController extends Controller
      */
     public function store(Request $request)
     {
-        $data = $request->validate([
+          $request->validate([
             'name'=>'required',
             'email'=>'required|email',
             'text'=>'required',
 
         ]);
+        $data = [
+            'name'=>$request->name,
+            'email'=>$request->email,
+            'text'=>$request->text
+        ];
+
+        
         Contact::create($data);
         return redirect(route('contactus'))->with('success','Feedback sent sucessfully!');
     }

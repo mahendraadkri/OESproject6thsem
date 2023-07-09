@@ -18,26 +18,28 @@
 <script src="{{asset('datatable/jquery-3.6.0.js')}}"></script>
 @vite(['resources/css/app.css', 'resources/js/app.js'])
 @include('links.links')
+
 </head>
 
 <body class="bg-cyan-400">
-   <div class="flex px-24 justify-between bg-gray-300 p-2 text-lg">
-      <span>Ph: 9866666666</span>
-      @if(auth()->user())
-          <div class="flex flex-row items-center gap-4">
-              <a href="">{{auth()->user()->name}} /</a>
-              <form class="inline" action="{{route('logout')}}" method="POST">
-                  @csrf
-                  <button type="submit"> Logout</button>
-              </form>
-              <a href="{{route('cart.index')}}"><x-emblem-cart style="width: 20px"/></a>
-              <a href="{{route('wishlist.index')}}"><i class="fa fa-heart" aria-hidden="true"></i></a>
-          </div>
-          @else
-          
-          <span><a href="{{route('userlogin')}}" class="bg-cyan-400 text-white font-[Poppins] duration-500 px-6 py-2 mx-4 hover:bg-cyan-500 rounded ">Login/Register</a></span>
-      @endif
-  </div>
+  <div class="flex px-24 justify-between bg-gray-300 p-2 text-lg">
+    <span>Ph: 9866666666</span>
+    
+    @if(auth()->user())
+        <div class="flex flex-row items-center gap-4">
+            <a href="">{{auth()->user()->name}} </a>
+            <form class="inline" action="{{route('logout')}}" method="POST">
+                @csrf
+                <button type="submit"> Logout</button>
+            </form>
+            <a href="{{route('cart.index')}}"><x-emblem-cart style="width: 20px"/></a>
+            <a href="{{route('wishlist.index')}}"><i class="fa fa-heart" aria-hidden="true"></i></a>
+        </div>
+        @else
+        
+        <span><a href="{{route('userlogin')}}" class="bg-cyan-400 text-white font-[Poppins] duration-500 px-6 py-2 mx-4 hover:bg-cyan-500 rounded ">Login/Register</a></span>
+    @endif
+</div>
   <nav class="p-5 bg-white shadow md:flex md:items-center md:justify-between">
     <div class="flex justify-between items-center ">
       <span class="text-2xl font-[Poppins] cursor-pointer">

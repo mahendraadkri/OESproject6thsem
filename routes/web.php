@@ -37,7 +37,12 @@ Route::get('/categoryproduct/{id}',[PagesController::class,'categoryproduct'])->
 
 Route::get('/userregister',[UserController::class,'userregister'])->name('user.register');
 
-Route::post('/userregister',[UserController::class,'userstore'])->name('user.register');
+Route::post('/userregister',[UserController::class,'userstore'])->name('user.store');
+
+// route for user profile edit
+Route::get('/myprofile', [UserController::class, 'profile'])->name('myprofile');
+Route::get('/profileedit/{id}', [UserController::class, 'edit'])->name('profileedit');
+Route::post('/profileedit/{id}/update', [UserController::class, 'update'])->name('profileedit.update');
 
 
 
@@ -56,6 +61,8 @@ Route::middleware(['auth'])->group(function(){
     Route::post('/mycart/store',[CartController::class,'store'])->name('cart.store');
 });
 
+
+
 Route::middleware(['auth'])->group(function(){
     Route::get('/mycart',[CartController::class,'index'])->name('cart.index');
     Route::post('/mycart/store',[CartController::class,'store'])->name('cart.store');
@@ -66,11 +73,12 @@ Route::middleware(['auth'])->group(function(){
     Route::post('/mywishlist/store',[WishlistController::class,'store'])->name('wishlist.store');
 
         //route for contact admin
+        Route::post('/contact/store',[ContactController::class,'store'])->name('contact.store');
 
-        Route::get('/contact', [ContactController::class, 'index'])->name('contact.index');
+        // Route::get('/contact', [ContactController::class, 'index'])->name('contact.index');
 
-        Route::get('/contact/create', [ContactController::class, 'create'])->name('contact.create');
-        Route::post('/contact', [ContactController::class, 'store'])->name('contact.store');
+        // Route::get('/contact/create', [ContactController::class, 'create'])->name('contact.create');
+        // Route::post('/contact', [ContactController::class, 'store'])->name('contact.store');
 });
 
 Route::middleware(['auth','isadmin'])->group(function () {
@@ -94,7 +102,7 @@ Route::middleware(['auth','isadmin'])->group(function () {
 
      //contact
      Route::get('/contact',[ContactController::class,'index'])->name('contact.index');
-     Route::get('/contact/store',[ContactController::class,'store'])->name('contact.store');
+     
      Route::get('/contact/destroy',[ContactController::class,'destroy'])->name('contact.destroy');
 
      //product

@@ -335,14 +335,12 @@ class="bg-neutral-100 text-center text-neutral-600 dark:bg-neutral-600 dark:text
         Products
       </h6>
       <p class="mb-4">
-        <a href="/welcome" class="text-neutral-600 dark:text-neutral-200"
-          >Angular</a
-        >
+        <a href="href="{{ route('myprofile') }}" class="text-neutral-600 dark:text-neutral-200"
+          >Profile</a>
       </p>
       <p class="mb-4">
-        <a href="#!" class="text-neutral-600 dark:text-neutral-200"
-          >React</a
-        >
+        <a href="href="{{ route('myprofile') }}" class="text-neutral-600 dark:text-neutral-200"
+          >Profile</a>
       </p>
       <p class="mb-4">
         <a href="#!" class="text-neutral-600 dark:text-neutral-200"

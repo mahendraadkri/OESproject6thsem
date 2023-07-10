@@ -1,7 +1,7 @@
 @extends('master')
 @section('content')
 @include('layouts.message')
-<!-- Create By Joker Banny -->
+
 <style>
     @layer utilities {
     input[type="number"]::-webkit-inner-spin-button,
@@ -53,10 +53,4 @@
     </div>
   </div>
 </body>
-
-
-
-
-
-
 @endsection

@@ -47,12 +47,14 @@ class ContactController extends Controller
           $request->validate([
             'name'=>'required',
             'email'=>'required|email',
+            'phone'=>'required',
             'text'=>'required',
 
         ]);
         $data = [
             'name'=>$request->name,
             'email'=>$request->email,
+            'phone'=>$request->phone,
             'text'=>$request->text
         ];
 

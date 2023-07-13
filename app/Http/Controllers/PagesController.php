@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Cart;
 use App\Models\Category;
+use App\Models\Order;
 use App\Models\Product;
 use Illuminate\Http\Request;
 
@@ -17,7 +18,7 @@ class PagesController extends Controller
         }
         else
         {
-            return Cart::where('user_id',auth()->user()->id)->count();
+            return Cart::where('user_id',auth()->user()->id)->where('is_ordered',false)->count();
         }
     }
     public function home()
@@ -30,24 +31,15 @@ class PagesController extends Controller
 
     public function about()
     {
-
         return view('about');
-    }
-
-    public function contactus()
-    {
-        $categories = Category::all();
-
-        return view('contactus',compact('categories'));
     }
 
     public function viewproduct(Product $product)
     {
         $itemsincart = $this->include();
         // $product = Product::find($id);
-        $categories = Category::orderBy('priority')->get();
         $relatedproducts = Product::where('category_id',$product->category_id)->whereNot('id',$product->id)->get();
-       
+        $categories = Category::orderBy('priority')->get();
         return view('viewproduct',compact('product','categories','itemsincart','relatedproducts'));
     }
 
@@ -66,6 +58,33 @@ class PagesController extends Controller
         $products = Product::where('category_id',$id)->paginate(2);
         $categories = Category::orderBy('priority')->get();
         return view('categoryproduct',compact('products','categories','itemsincart','category'));
+    }
+
+    public function orders()
+    {
+        $categories = Category::orderBy('priority')->get();
+        $itemsincart = $this->include();
+        $orders = Order::where('user_id',auth()->user()->id)->get();
+        foreach($orders as $order)
+        {
+            $cartids = explode(',',$order->cart_id);
+            $carts = [];
+            foreach($cartids as $cartid)
+            {
+                $cart = Cart::find($cartid);
+                array_push($carts,$cart);
+            }
+            $order->carts = $carts;
+        }
+
+        return view('userorder',compact('orders','categories','itemsincart'));
+    }
+
+    public function contactus()
+    {
+        $categories = Category::all();
+
+        return view('contactus',compact('categories'));
     }
 
 

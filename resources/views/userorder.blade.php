@@ -1,5 +1,5 @@
 @extends('master')
-@extends('content')
+@section('content')
 
 <table>
     <tr>

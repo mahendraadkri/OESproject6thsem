@@ -3,6 +3,14 @@
     
 
 <h2 class="font-bold text-4xl text-center my-5">{{$category->name}}</h2>
+<div class="col-md-12 md-3">
+<span class="font-weight-bold sort-font">Sort By :</span>
+<a href="{{ URL::current() }}" class="sort-font">All</a>
+<a href="{{ URL::current()."/?sort=price_asc" }}" class="sort-font">Price : Low to High</a>
+<a href="{{ URL::current()."?sort=price_desc" }}" class="sort-font">Price : High to Low</a>
+<a href="{{ URL::current()."?sort=newest" }}" class="sort-font">Newest</a>
+
+</div>
 
 <div class="grid grid-cols-4 gap-10 px-24 mb-10">
 

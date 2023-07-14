@@ -55,7 +55,24 @@ class PagesController extends Controller
     {
         $category = Category::find($id);
         $itemsincart = $this->include();
-        $products = Product::where('category_id',$id)->paginate(2);
+
+        if(request()->get('sort') == 'price_asc') {
+            $products = Product::where('category_id', $id)->paginate(16);
+            $categories = Category::orderBy('price','asc')->get();
+        }
+        elseif(request()->get('sort') == 'price_desc')
+        {
+            $products = Product::where('category_id', $id)->paginate(16);
+            $categories = Category::orderBy('price','desc')->get();
+        }
+        elseif(request()->get('sort') == 'newest')
+        {
+            $products = Product::where('category_id', $id)->paginate(16);
+            $categories = Category::orderBy('created_at','desc')->get();
+        }
+       
+
+        $products = Product::where('category_id',$id)->paginate(16);
         $categories = Category::orderBy('priority')->get();
         return view('categoryproduct',compact('products','categories','itemsincart','category'));
     }

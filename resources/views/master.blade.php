@@ -26,8 +26,21 @@
     <span>Ph: 9866666666</span>
     
     @if(auth()->user())
-        <div class="flex flex-row items-center gap-4">
-            <a href="">{{auth()->user()->name}} </a>
+        <div class="flex flex-row items-center gap-4 relative">
+            <button onclick="showdialog()">{{auth()->user()->name}}</button> 
+            <div class="absolute top-8 bg-cyan-400 p-4 " id="userdialog" style="display:none">
+        
+                <p class="mb-4">
+                  <a href="myprofile" class="text-neutral-600 "
+                    >Profile</a>
+                </p>
+                <p class="mb-4">
+                  <a href="vieworder" class="text-neutral-600"
+                    >My Order</a>
+                </p>
+              
+
+            </div>
             <form class="inline" action="{{route('logout')}}" method="POST">
                 @csrf
                 <button type="submit"> Logout</button>
@@ -40,6 +53,17 @@
         <span><a href="{{route('userlogin')}}" class="bg-cyan-400 text-white font-[Poppins] duration-500 px-6 py-2 mx-4 hover:bg-cyan-500 rounded ">Login/Register</a></span>
     @endif
 </div>
+<script>
+  const userdialog = document.getElementById('userdialog');
+
+  function showdialog(){
+    if(userdialog.style.display == 'none'){
+    userdialog.style.display = 'block' ;
+  }else{
+    userdialog.style.display = 'none';
+  }
+}
+</script>
   <nav class="p-5 bg-white shadow md:flex md:items-center md:justify-between">
     <div class="flex justify-between items-center ">
       <span class="text-2xl font-[Poppins] cursor-pointer">

@@ -69,6 +69,8 @@ class UserController extends Controller
     }
     public function edit(string $id)
     {
-        dd($id);
+        $user = User::find($id);
+        $categories = Category::all();
+        return view('profileedit',compact('user','categories'));
     }
 }

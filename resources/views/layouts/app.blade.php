@@ -34,6 +34,8 @@
 
             <a href="{{route('product.index')}}" class="text-x1 font-bold border-b-2 border-blue-500 block ml-4 px-2 py-1 hover:bg-blue-500 hover:text-white">Product</a>
 
+            <a href="{{route('user.index')}}" class="text-x1 font-bold border-b-2 border-blue-500 block ml-4 px-2 py-1 hover:bg-blue-500 hover:text-white">Users</a>
+
             <a href="{{route('order.index')}}" class="text-x1 font-bold border-b-2 border-blue-500 block ml-4 px-2 py-1 hover:bg-blue-500 hover:text-white">Order</a>
 
             <form action="{{route('logout')}}" method="POST">

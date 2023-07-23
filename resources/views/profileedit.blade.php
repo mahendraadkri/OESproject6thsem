@@ -14,19 +14,40 @@
                     
                     <input type="text" class="block border border-grey-ligh t w-full p-3 rounded mb-4"
                                 name="name" placeholder="Full Name" value="{{ auth()->user()->name }}" />
-                                <x-input-error :messages="$errors->get('name')" class="mt-2" />
+                                @error('name')
+                                <p class="text-red-600 text-xs -mt-2">{{$message}}</p>
+                            @enderror
 
-                                <input type="text" class="block border border-grey-light w-full p-3 rounded mb-4"
+                    <input type="text" class="block border border-grey-light w-full p-3 rounded mb-4"
                                 name="email" placeholder="Email" value="{{ auth()->user()->email }}" />
-                                <x-input-error :messages="$errors->get('email')" class="mt-2" />
+                                @error('name')
+                                <p class="text-red-600 text-xs -mt-2">{{$message}}</p>
+                            @enderror
 
-                            <input type="text" class="block border border-grey-light w-full p-3 rounded mb-4"
+                    <input type="text" class="block border border-grey-light w-full p-3 rounded mb-4"
                                 name="address" placeholder="Address" value="{{ auth()->user()->address }}" />
-                                <x-input-error :messages="$errors->get('address')" class="mt-2" />
+                                @error('name')
+                                <p class="text-red-600 text-xs -mt-2">{{$message}}</p>
+                            @enderror
 
-                            <input type="text" class="block border border-grey-light w-full p-3 rounded mb-4"
+                    <input type="text" class="block border border-grey-light w-full p-3 rounded mb-4"
                                 name="phone" placeholder="Phone" value="{{ auth()->user()->phone }}" />
-                                <x-input-error :messages="$errors->get('phone')" class="mt-2" />
+                                @error('name')
+                                 <p class="text-red-600 text-xs -mt-2">{{$message}}</p>
+                                @enderror
+                                    
+                    <input type="password" class="block border border-grey-light w-full p-3 rounded mb-4" name="password"
+                            placeholder="Password" />
+                            @error('name')
+                            <p class="text-red-600 text-xs -mt-2">{{$message}}</p>
+                            @enderror
+
+                    <input type="password" class="block border border-grey-light w-full p-3 rounded mb-4"
+                            name="password_confirmation" placeholder="Confirm Password" />
+                            @error('name')
+                            <p class="text-red-600 text-xs -mt-2">{{$message}}</p>
+                        @enderror
+
 
                            <a href="{{ route('profileedit', auth()->user()->id) }}" type="submit"
                                 class="text-center ml-24 px-2 py-3 bg-yellow-500 rounded bg-green text-black hover:bg-green-dark focus:outline-none my-1">Update Account</a>

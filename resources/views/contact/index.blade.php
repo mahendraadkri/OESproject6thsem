@@ -13,6 +13,7 @@
             <th>ID</th>
             <th>Name</th>
             <th>Email</th>
+            <th>Phone No.</th>
             <th>Text</th>
             <th>Time</th>
             <th>Action</th>
@@ -23,6 +24,7 @@
                 <td>{{$contact->id}}</td>
                 <td>{{$contact->name}}</td>
                 <td>{{$contact->email}}</td>
+                <td>{{$contact->phone}}</td>
                 <td>{{$contact->text}}</td>
                 <td>{{$contact->created_at}}</td>
                 <td>

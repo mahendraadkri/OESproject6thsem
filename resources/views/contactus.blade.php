@@ -35,7 +35,7 @@
                             id="exampleFormControlTextarea13" rows="3" placeholder="Message" name="text"></textarea>
                     </div>
                     
-                    <input class="bg-blue-600 text-black px-4 py-2 rounded-lg shadow-md hover:shadow-blue-300 hover:text-white"
+                    <input class="bg-blue-600 text-black px-5 py-2 rounded-lg shadow-md hover:shadow-blue-300 hover:text-white"
                         type="submit" value="Send">
                    
                 </form>

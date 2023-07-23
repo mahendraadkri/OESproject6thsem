@@ -39,10 +39,7 @@ Route::get('/userregister',[UserController::class,'userregister'])->name('user.r
 
 Route::post('/userregister',[UserController::class,'userstore'])->name('user.store');
 
-// route for user profile edit
-Route::get('/myprofile', [UserController::class, 'profile'])->name('myprofile');
-Route::get('/profileedit/{id}', [UserController::class, 'edit'])->name('profileedit');
-Route::post('/profileedit/{id}/update', [UserController::class, 'update'])->name('profileedit.update');
+
 
 
 
@@ -76,6 +73,15 @@ Route::middleware(['auth'])->group(function(){
 
         // Route::get('/contact/create', [ContactController::class, 'create'])->name('contact.create');
         // Route::post('/contact', [ContactController::class, 'store'])->name('contact.store');
+
+
+    // route for user profile edit
+    Route::get('/myprofile', [UserController::class, 'profile'])->name('myprofile');
+    Route::get('/profileedit/{id}', [UserController::class, 'edit'])->name('profileedit');
+    Route::post('/profileedit/{id}/update', [UserController::class, 'update'])->name('profileedit.update');
+
+    //khalti
+    Route::post('/khaltiverified',[OrderController::class,'khaltiverified'])->name('khaltiverified');
 });
 
 Route::middleware(['auth','isadmin'])->group(function () {
@@ -102,8 +108,8 @@ Route::middleware(['auth','isadmin'])->group(function () {
      
      Route::get('/contact/destroy',[ContactController::class,'destroy'])->name('contact.destroy');
 
-     //product
-   
+     
+   //product
     Route::get('/product',[ProductController::class,'index'])->name('product.index');
     Route::get('/product/create',[ProductController::class,'create'])->name('product.create');
     Route::post('/product/store',[ProductController::class,'store'])->name('product.store');
@@ -117,6 +123,9 @@ Route::middleware(['auth','isadmin'])->group(function () {
      Route::post('/order/{id}/update',[OrderController::class,'update'])->name('order.update');
      Route::get('/order/status/{id}/{status}',[OrderController::class,'status'])->name('order.status');
      Route::get('/order/{id}/details',[OrderController::class,'details'])->name('order.details');
+
+     //Users
+    Route::get('/user',[UserController::class,'index'])->name('user.index');
     
 
 

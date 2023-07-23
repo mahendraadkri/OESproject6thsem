@@ -2,7 +2,7 @@
 @section('content')
 @include('layouts.message')
 
-<h1 class="text-center font-bold text-3xl mt-10">Billing Details</h1>
+<h1 class="text-center font-bold text-3xl mt-10">Orders</h1>
 
 <form action="{{route('order.store')}}" method="POST" class="w-1/2 mx-auto my-10">
     @csrf
@@ -19,9 +19,7 @@
     </select>
 
 
-    <input type="submit" class="bg-blue-600 text-white p-5 rounded w-1/3 mx-auto block mt-5 cursor-pointer" value="Place Order">
-
-    
+    <input type="submit" class="bg-blue-600 text-white p-5 rounded w-1/3 mx-auto block mt-5 cursor-pointer hover:bg-blue-900" value="Place Order">
 </form>
 
 @endsection

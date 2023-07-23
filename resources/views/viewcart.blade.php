@@ -52,5 +52,58 @@
       </div>
     </div>
   </div>
+  <button type="button" id="payment-button">Pay with Khalti</button>
+  <script>
+    var config = {
+        // replace the publicKey with yours
+        "publicKey": "test_public_key_7db4a6a1d086486899475b6537e318e7",
+        "productIdentity": "{{auth()->user()->id}}",
+        "productName": "Names",
+        "productUrl": "http://127.0.0.1:8000/mycart",
+        "paymentPreference": [
+            "KHALTI",
+            "EBANKING",
+            "MOBILE_BANKING",
+            "CONNECT_IPS",
+            "SCT",
+            ],
+        "eventHandler": {
+            onSuccess (payload) {
+                // hit merchant api for initiating verfication
+                console.log(payload);
+
+                $.ajax({
+          url: "{{route('khaltiverified')}}",
+          data:{
+            data:payload,
+            _token:"{{ csrf_token()}}"
+          },
+          type: "POST",
+          success: function(response) {
+            console.log(response);
+          },
+          error: function(xhr, status, error) {
+            console.log("Error: " + error);
+          }
+        });
+            },
+            onError (error) {
+                console.log(error);
+            },
+            onClose () {
+                console.log('widget is closing');
+            }
+        }
+    };
+
+    var checkout = new KhaltiCheckout(config);
+    var btn = document.getElementById("payment-button");
+    btn.onclick = function () {
+        // minimum transaction amount must be 10, i.e 1000 in paisa.
+        checkout.show({amount: 1000});
+    }
+</script>
+
 </body>
+
 @endsection

@@ -8,6 +8,7 @@ use App\Models\wishlist;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Validation\Rules;
+use Illuminate\Support\Facades\Mail;
 
 class UserController extends Controller
 {
@@ -22,6 +23,18 @@ class UserController extends Controller
     {
         $categories = Category::orderBy('priority')->get();
         return view('userregister',compact('categories'));
+
+        $data = [
+            'name' => auth()->user()->name,
+            'mailmessage' => 'You have been successfully register',
+    			];
+ 		Mail::send('email.register',$data, function ($message){
+ 			$message->to(auth()->user()->email)
+ 			->subject('You have been successfully register');
+ 		});
+
+       
+         
     }
     public function userstore(Request $request)
     {
@@ -37,6 +50,8 @@ class UserController extends Controller
         $data['role'] = 'user';
         
         User::create($data);
+
+       
         return redirect(route('home'));
 
     }
@@ -53,13 +68,7 @@ class UserController extends Controller
         $data['password'] = Hash::make($data['password']);
 
 
-        if ($request->hasFile('image_url')) {
-            $image = $request->file('image_url');
-            $name = time() . '.' . $image->getClientOriginalExtension();
-            $destinationPath = public_path('/images/user');
-            $image->move($destinationPath, $name);
-            $data['image_url'] = $name;
-        }
+       
 
         $user = User::find($id);
         $user->update($data);
@@ -72,5 +81,11 @@ class UserController extends Controller
         $user = User::find($id);
         $categories = Category::all();
         return view('profileedit',compact('user','categories'));
+    }
+
+    public function index()
+    {
+        $users = User::all();
+        return view('user.index',compact('users'));
     }
 }

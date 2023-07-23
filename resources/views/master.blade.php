@@ -35,7 +35,7 @@
                     >Profile</a>
                 </p>
                 <p class="mb-4">
-                  <a href="vieworder" class="text-neutral-600"
+                  <a href="myorders" class="text-neutral-600"
                     >My Order</a>
                 </p>
               

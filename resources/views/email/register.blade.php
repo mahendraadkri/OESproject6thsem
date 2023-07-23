@@ -1,0 +1,1 @@
+<p style="color: black">Congrulations <b>{{$name}}</b> you have Successfully register <b>Online Electronic Store</b>: {{$mailmessage}}</p>

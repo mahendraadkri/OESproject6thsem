@@ -111,4 +111,12 @@ class ProductController extends Controller
         $product->delete();
         return redirect(route('product.index'))->with('success','Product Deleted Successfully');
     }
+
+    public function orderby(Request $request)
+    {
+        $data = $request->toArray();
+        $products = Product::orderby('price',$data['data'])->get();
+
+        return  response()->json($products);
+    }
 }

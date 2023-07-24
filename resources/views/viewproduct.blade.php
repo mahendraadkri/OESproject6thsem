@@ -1,6 +1,12 @@
 @extends('master')
 @section('content')
 @include('layouts.message')
+
+<!-- Modal -->
+<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    
+  </div>
+
     <div class="grid grid-cols-3 px-44 gap-10 my-10">
         <div>
             <img src="{{asset('images/products/'.$product->photopath)}}" alt="" class="w-full h-96 object-cover rounded-lg">
@@ -18,7 +24,11 @@
                 <input class="h-11 w-12 px-0 text-center border-0 bg-gray-100" type="number" name="qty" value="1" readonly>
                 <span class="bg-gray-200 px-4 py-2 font-bold text-xl">+</span>
             </div>
-            <p>In Stock: {{$product->stock}}</p>
+            <p><b>In Stock:</b> {{$product->stock}}</p>
+
+
+            
+            
 
             <div class="mt-14">
                 

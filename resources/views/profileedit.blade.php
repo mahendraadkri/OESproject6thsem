@@ -20,31 +20,31 @@
 
                     <input type="text" class="block border border-grey-light w-full p-3 rounded mb-4"
                                 name="email" placeholder="Email" value="{{ auth()->user()->email }}" />
-                                @error('name')
+                                @error('email')
                                 <p class="text-red-600 text-xs -mt-2">{{$message}}</p>
                             @enderror
 
                     <input type="text" class="block border border-grey-light w-full p-3 rounded mb-4"
                                 name="address" placeholder="Address" value="{{ auth()->user()->address }}" />
-                                @error('name')
+                                @error('address')
                                 <p class="text-red-600 text-xs -mt-2">{{$message}}</p>
                             @enderror
 
                     <input type="text" class="block border border-grey-light w-full p-3 rounded mb-4"
                                 name="phone" placeholder="Phone" value="{{ auth()->user()->phone }}" />
-                                @error('name')
+                                @error('phone')
                                  <p class="text-red-600 text-xs -mt-2">{{$message}}</p>
                                 @enderror
                                     
                     <input type="password" class="block border border-grey-light w-full p-3 rounded mb-4" name="password"
                             placeholder="Password" />
-                            @error('name')
+                            @error('password')
                             <p class="text-red-600 text-xs -mt-2">{{$message}}</p>
                             @enderror
 
                     <input type="password" class="block border border-grey-light w-full p-3 rounded mb-4"
                             name="password_confirmation" placeholder="Confirm Password" />
-                            @error('name')
+                            @error('password_confirmation')
                             <p class="text-red-600 text-xs -mt-2">{{$message}}</p>
                         @enderror
 

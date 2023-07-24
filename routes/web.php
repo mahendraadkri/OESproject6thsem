@@ -11,6 +11,9 @@ use App\Http\Controllers\CartController;
 use App\Http\Controllers\OrderController;
 use App\Http\Controllers\ContactController;
 use App\Http\Controllers\WishlistController;
+use App\Models\Category;
+use App\Models\Contact;
+use App\Models\Order;
 use Illuminate\Foundation\Application;
 use Inertia\Inertia;
 
@@ -39,6 +42,8 @@ Route::get('/userregister',[UserController::class,'userregister'])->name('user.r
 
 Route::post('/userregister',[UserController::class,'userstore'])->name('user.store');
 
+Route::post('/product/orderby',[ProductController::class,'orderby'])->name('product.orderby');
+
 
 
 
@@ -50,7 +55,11 @@ Route::post('/userregister',[UserController::class,'userstore'])->name('user.sto
 
 
 Route::get('/dashboard', function () {
-    return view('dashboard');
+
+    $categories = Category::count();
+    $orders = Order::where('status','Pending')->count();
+    $contacts = Contact::count();
+    return view('dashboard',compact('categories','orders','contacts'));
 })->middleware(['auth', 'verified','isadmin'])->name('dashboard');
 
 
@@ -116,6 +125,10 @@ Route::middleware(['auth','isadmin'])->group(function () {
     Route::get('/product/{id}/edit',[ProductController::class,'edit'])->name('product.edit');
     Route::post('/product/{id}/update',[ProductController::class,'update'])->name('product.update');
     Route::get('/product/{id}/destroy',[ProductController::class,'destroy'])->name('product.destroy');
+
+
+    
+
 
      //orders
      Route::get('/order',[OrderController::class,'index'])->name('order.index');

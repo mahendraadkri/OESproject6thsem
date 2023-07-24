@@ -40,7 +40,7 @@
 
             <form action="{{route('logout')}}" method="POST">
                 @csrf
-                <input type="submit" value="LogOut" class="text-xl font-bold border -b-2 border-blue-500 block ml-4 px-2 py-1 hover:bg-blue-600 hover:text-white">
+                <input type="submit" value="LogOut" class="text-x1 font-bold border-b-2 border-blue-500 block ml-4 px-2 py-1 hover:bg-amber-600 hover:text-white">
             </form>
 
             

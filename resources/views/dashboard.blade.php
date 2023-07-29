@@ -22,4 +22,9 @@
         <p class="font-bold text-5xl">{{$orders}}</p>
     </div>
 
+    <div class="px-4 py-8 rounded-lg bg-blue-600 text-white flex justice-between">
+        <p class="font-bold text-lg">Total Users</p></p>
+        <p class="font-bold text-5xl">{{$users}}</p>
+    </div>
+
 @endsection

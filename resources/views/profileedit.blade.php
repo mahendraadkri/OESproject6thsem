@@ -9,51 +9,34 @@
             <div class="text-center w-full">
                 <h2 class="font-bold text-4xl">Edit Profile</h2>
                 
-                <form action="{{route('profileedit.update',auth()->user()->id)}}" method="POST" enctype="multipart/form-data">
+                <form action="{{ route('profileedit.update',$user->id)}}" method="POST" enctype="multipart/form-data">
                     @csrf
-                    
-                    <input type="text" class="block border border-grey-ligh t w-full p-3 rounded mb-4"
-                                name="name" placeholder="Full Name" value="{{ auth()->user()->name }}" />
-                                @error('name')
-                                <p class="text-red-600 text-xs -mt-2">{{$message}}</p>
-                            @enderror
-
-                    <input type="text" class="block border border-grey-light w-full p-3 rounded mb-4"
-                                name="email" placeholder="Email" value="{{ auth()->user()->email }}" />
-                                @error('email')
-                                <p class="text-red-600 text-xs -mt-2">{{$message}}</p>
-                            @enderror
-
-                    <input type="text" class="block border border-grey-light w-full p-3 rounded mb-4"
-                                name="address" placeholder="Address" value="{{ auth()->user()->address }}" />
-                                @error('address')
-                                <p class="text-red-600 text-xs -mt-2">{{$message}}</p>
-                            @enderror
-
-                    <input type="text" class="block border border-grey-light w-full p-3 rounded mb-4"
-                                name="phone" placeholder="Phone" value="{{ auth()->user()->phone }}" />
-                                @error('phone')
-                                 <p class="text-red-600 text-xs -mt-2">{{$message}}</p>
-                                @enderror
-                                    
+    
+                    <h1 class="mb-8 text-3xl text-center">Edit Profile</h1>
+    
+                
+    
+                    <input type="text" class="block border border-grey-light w-full p-3 rounded mb-4" name="name"
+                        placeholder="Full Name"  value="{{auth()->user()->name}}" />
+    
+                    <input type="text" class="block border border-grey-light w-full p-3 rounded mb-4" name="phone"
+                        placeholder="Phone" value="{{auth()->user()->phone}}"/>
+    
+                    <input type="text" class="block border border-grey-light w-full p-3 rounded mb-4" name="address"
+                        placeholder="Address" value="{{auth()->user()->address}}" />
+                    <input type="text" class="block border border-grey-light w-full p-3 rounded mb-4" name="email"
+                        placeholder="Email" value="{{auth()->user()->email}}"/>
+    
                     <input type="password" class="block border border-grey-light w-full p-3 rounded mb-4" name="password"
-                            placeholder="Password" />
-                            @error('password')
-                            <p class="text-red-600 text-xs -mt-2">{{$message}}</p>
-                            @enderror
-
+                        placeholder="Password" />
                     <input type="password" class="block border border-grey-light w-full p-3 rounded mb-4"
-                            name="password_confirmation" placeholder="Confirm Password" />
-                            @error('password_confirmation')
-                            <p class="text-red-600 text-xs -mt-2">{{$message}}</p>
-                        @enderror
-
-
-                           <a href="{{ route('profileedit', auth()->user()->id) }}" type="submit"
-                                class="text-center ml-24 px-2 py-3 bg-yellow-500 rounded bg-green text-black hover:bg-green-dark focus:outline-none my-1">Update Account</a>
-
-                    
-                </form>
+                        name="password_confirmation" placeholder="Confirm Password" />
+    
+                    <button type="submit" class="text-center  ml-24 px-2 py-3 bg-blue-700 rounded bg-green text-black hover:bg-green-dark focus:outline-none my-1">Update Account</button>
+                 
+            </div>
+            </form>
+    
              
 
             </div>

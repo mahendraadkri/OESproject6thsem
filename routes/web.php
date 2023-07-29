@@ -10,10 +10,13 @@ use App\Http\Controllers\PagesController;
 use App\Http\Controllers\CartController;
 use App\Http\Controllers\OrderController;
 use App\Http\Controllers\ContactController;
+use App\Http\Controllers\RatingController;
 use App\Http\Controllers\WishlistController;
+use App\Http\Controllers\UserRatingController;
 use App\Models\Category;
 use App\Models\Contact;
 use App\Models\Order;
+use App\Models\User;
 use Illuminate\Foundation\Application;
 use Inertia\Inertia;
 
@@ -44,6 +47,8 @@ Route::post('/userregister',[UserController::class,'userstore'])->name('user.sto
 
 Route::post('/product/orderby',[ProductController::class,'orderby'])->name('product.orderby');
 
+ Route::get('search',[PagesController::class,'searchProduct']);
+
 
 
 
@@ -59,7 +64,8 @@ Route::get('/dashboard', function () {
     $categories = Category::count();
     $orders = Order::where('status','Pending')->count();
     $contacts = Contact::count();
-    return view('dashboard',compact('categories','orders','contacts'));
+    $users = User::count();
+    return view('dashboard',compact('categories','orders','contacts','users'));
 })->middleware(['auth', 'verified','isadmin'])->name('dashboard');
 
 
@@ -75,8 +81,14 @@ Route::middleware(['auth'])->group(function(){
     Route::get('/mywishlist',[WishlistController::class,'index'])->name('wishlist.index');
     Route::post('/mywishlist/store',[WishlistController::class,'store'])->name('wishlist.store');
 
-        //route for contact admin
-        Route::post('/contact/store',[ContactController::class,'store'])->name('contact.store');
+    //route for contact admin
+    Route::post('/contact/store',[ContactController::class,'store'])->name('contact.store');
+
+    //route for rating & review
+   Route::post('/add-rating', [UserRatingController::class, 'addRating']);
+
+     
+        
 
         // Route::get('/contact', [ContactController::class, 'index'])->name('contact.index');
 
@@ -127,7 +139,10 @@ Route::middleware(['auth','isadmin'])->group(function () {
     Route::get('/product/{id}/destroy',[ProductController::class,'destroy'])->name('product.destroy');
 
 
-    
+    //ratings
+    Route::get('/rating',[UserRatingController::class,'ratings'])->name('rating.index');
+
+
 
 
      //orders
@@ -139,6 +154,7 @@ Route::middleware(['auth','isadmin'])->group(function () {
 
      //Users
     Route::get('/user',[UserController::class,'index'])->name('user.index');
+    Route::post('update-rating-status','RatingController@updateRatingStatus');
     
 
 

@@ -48,6 +48,7 @@ class PagesController extends Controller
     {
         $itemsincart = $this->include();
         $categories = Category::orderBy('priority')->get();
+        // dd($categories);
         return view('userlogin',compact('categories','itemsincart'));
     }
 
@@ -103,6 +104,29 @@ class PagesController extends Controller
 
         return view('contactus',compact('categories'));
     }
+
+    public function searchProduct(Request $request)
+    {
+        $products = Product::all();
+        $categories = Category::all();
+        
+
+
+        if($request->search){
+
+            $searchProducts = Product::where('name','LIKE','%'.$request->search.'%')->latest()->paginate(16);
+            // dd($searchProducts);
+            return view('search',compact('searchProducts','categories'));
+
+        }else{
+            return redirect()->back()->with('messsage','No Products Found');
+
+        }
+        
+    }
+
+
+
 
 
 }

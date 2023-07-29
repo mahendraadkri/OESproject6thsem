@@ -78,6 +78,46 @@ $.ajax({
         <h2 class="font-bold text-2xl">About this product</h2>
         <p>{{$product->description}}</p>
     </div>
+    {{-- Rating & Review --}}
+    <div class="px-44 my-10">
+        <h2 class="font-bold text-2xl">Product Reviews</h2>
+        <div class="row">
+            <div class="span4">
+                <h3><b>Write a Review</b></h3>
+                <form method="POST" action="{{url('/add-rating')}}" name="formRating" id="ratingForm">
+                    @csrf
+                    <input type="hidden" name="product_id" value="{{$product['id'] }}">
+                    <div class="rate">
+                        <input type="radio" id="star5" name="rating" value="5" />
+                        <label for="star5" title="text">5 stars</label>
+                        <input type="radio" id="star4" name="rating" value="4" />
+                        <label for="star4" title="text">4 stars</label>
+                        <input type="radio" id="star3" name="rating" value="3" />
+                        <label for="star3" title="text">3 stars</label>
+                        <input type="radio" id="star2" name="rating" value="2" />
+                        <label for="star2" title="text">2 stars</label>
+                        <input type="radio" id="star1" name="rating" value="1" />
+                        <label for="star1" title="text">1 star</label>
+                      </div>
+                      <br><br>
+                      <div class="form-group">
+                        <label><b>Your Review:</b></label><br>
+                        <textarea name="review" style="width: 300px; height: 50ox;" required=""></textarea>
+                      </div>
+                      <div>&nbsp;</div>
+                      <div class="form-group">
+                        <input type="submit" name="Submit" class="bg-blue-600 text-black px-5 py-2 rounded-lg shadow-md hover:shadow-blue-300 hover:text-white">
+                      </div>
+
+                </form>
+            </div>
+            <div class="span4">
+                <h3><b>Users Review</b></h3>
+               
+            </div>
+        </div>
+    </div>
+   
 
     <div class="px-44 my-10">
         <h2 class="font-bold text-2xl">Related Product</h2>
@@ -111,5 +151,49 @@ $.ajax({
 
         
     </div>
+
+    {{-- css for rating --}}
+    <style>
+        *{
+    margin: 0;
+    padding: 0;
+}
+.rate {
+    float: left;
+    height: 46px;
+    padding: 0 10px;
+}
+.rate:not(:checked) > input {
+    position:absolute;
+    top:-9999px;
+}
+.rate:not(:checked) > label {
+    float:right;
+    width:1em;
+    overflow:hidden;
+    white-space:nowrap;
+    cursor:pointer;
+    font-size:30px;
+    color:#ccc;
+}
+.rate:not(:checked) > label:before {
+    content: '★ ';
+}
+.rate > input:checked ~ label {
+    color: #ffc700;    
+}
+.rate:not(:checked) > label:hover,
+.rate:not(:checked) > label:hover ~ label {
+    color: #deb217;  
+}
+.rate > input:checked + label:hover,
+.rate > input:checked + label:hover ~ label,
+.rate > input:checked ~ label:hover,
+.rate > input:checked ~ label:hover ~ label,
+.rate > label:hover ~ input:checked ~ label {
+    color: #c59b08;
+}
+
+    </style>
 
 @endsection

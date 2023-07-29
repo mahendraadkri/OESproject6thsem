@@ -6,16 +6,23 @@ use App\Models\Category;
 use App\Models\Product;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\File;
+use App\Models\Rating;
 
 class ProductController extends Controller
 {
     /**
      * Display a listing of the resource.
      */
-    public function index()
+    public function index($request)
     {
         $products = Product::all();
-        return view('product.index',compact('products'));
+
+          //Get all rating of Products
+          $id = $request->input('product_id');
+          $rating = Rating::with('user')->where('status',1)->where('product_id',$id)->get()->toArray();
+        //   dd($rating); die;
+
+        return view('product.index',compact('products','rating'));
     }
 
     /**
@@ -118,5 +125,10 @@ class ProductController extends Controller
         $products = Product::orderby('price',$data['data'])->get();
 
         return  response()->json($products);
+    }
+
+    public function ratings()
+    {
+        return $this->hasMany(Rating::class);
     }
 }

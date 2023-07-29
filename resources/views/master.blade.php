@@ -71,6 +71,16 @@
           src="{{asset('images\logo.png')}}">
         Online Electronic Store
       </span>
+      {{-- search --}}
+      <form action="{{url('search')}}" method="GET" role="search">
+        @csrf
+        <div class="input-group">
+          <input type="search" name="search" value="{{Request::get('search')}}" placeholder="Search Products" class="form-control"/>
+          <button class="btn bg-white" type="submit">
+            <i class="fa fa-search"></i>
+          </button>
+          </div>
+      </form>
 
       <span class="text-3xl cursor-pointer mx-2 md:hidden block">
         <ion-icon name="menu" onclick="Menu(this)"></ion-icon>

@@ -6,7 +6,7 @@ use App\Models\Rating;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 
-class RatingTableSeeder extends Seeder
+class RatingsTableSeeder extends Seeder
 {
     /**
      * Run the database seeds.

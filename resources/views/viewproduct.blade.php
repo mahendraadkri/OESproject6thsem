@@ -19,27 +19,48 @@
             <p class="text-red-700 text-2xl font-bold">Rs. {{$product->price}}/-</p>
             <p>Quantity</p>
             <form action="{{route('cart.store')}}" method="POST">
-            <div class="mt-4 flex items-center">
-                <span class="bg-gray-200 px-4 py-2 font-bold text-xl">-</span>
-                <input class="h-11 w-12 px-0 text-center border-0 bg-gray-100" type="number" name="qty" value="1" readonly>
-                <span class="bg-gray-200 px-4 py-2 font-bold text-xl">+</span>
-            </div>
-            <p><b>In Stock:</b> {{$product->stock}}</p>
-
-
+                @csrf
+                <div class="mt-4 flex items-center">
+                    <span class="bg-gray-200 px-4 py-2 font-bold text-xl decrease-quantity">-</span>
+                    <input class="h-11 w-12 px-0 text-center border-0 bg-gray-100" type="number" name="qty" value="1" readonly>
+                    <span class="bg-gray-200 px-4 py-2 font-bold text-xl increase-quantity">+</span>
+                </div>
+                <p><b>In Stock:</b> {{$product->stock}}</p>
             
-            
-
-            <div class="mt-14">
-                
-                    @csrf
-
+                <div class="mt-14">
                     <input type="hidden" name="product_id" value="{{$product->id}}">
-                    <button type="submit" class="bg-indigo-700 text-white px-6 py-2 rounded-lg shadow hover:text-black rounded ">Add to Cart</button>
-                    <button type="button" class="bg-red-600 text-white px-6 py-2 rounded-lg shadow hover:text-black rounded " onclick="wishlist({{$product->id}})">Add to Wishlist</button>
-                
-            </div>
-        </form>
+                    <button type="submit" class="bg-indigo-700 text-white px-6 py-2 rounded-lg shadow hover:text-black rounded">Add to Cart</button>
+                    <button type="button" class="bg-red-600 text-white px-6 py-2 rounded-lg shadow hover:text-black rounded" onclick="wishlist({{$product->id}})">Add to Wishlist</button>
+                </div>
+            </form>
+            
+            {{-- Products decrease or increase Script --}}
+            <script>
+                document.addEventListener("DOMContentLoaded", function() {
+                    const decreaseBtn = document.querySelector(".decrease-quantity");
+                    const increaseBtn = document.querySelector(".increase-quantity");
+                    const quantityInput = document.querySelector("input[name='qty']");
+                    
+                    // Decrease the quantity
+                    decreaseBtn.addEventListener("click", function() {
+                        let currentValue = parseInt(quantityInput.value);
+                        if (currentValue > 1) {
+                            quantityInput.value = currentValue - 1;
+                        }
+                    });
+            
+                    // Increase the quantity
+                    increaseBtn.addEventListener("click", function() {
+                        let currentValue = parseInt(quantityInput.value);
+                        let stock = parseInt("{{$product->stock}}");
+                        if (currentValue < stock) {
+                            quantityInput.value = currentValue + 1;
+                        }
+                    });
+                });
+            </script>
+            
+            
         </div>
     </div>
     <script> 
@@ -86,7 +107,7 @@ $.ajax({
                 <h3><b>Write a Review</b></h3>
                 <form method="POST" action="{{url('/add-rating')}}" name="formRating" id="ratingForm">
                     @csrf
-                    <input type="hidden" name="product_id" value="{{$product['id'] }}">
+                    <input type="hidden" name="product_id" value="{{$product->id }}">
                     <div class="rate">
                         <input type="radio" id="star5" name="rating" value="5" />
                         <label for="star5" title="text">5 stars</label>
@@ -113,12 +134,24 @@ $.ajax({
             </div>
             <div class="span4">
                 <h3><b>Users Review</b></h3>
+                {{-- <div>
+
+                    @foreach ($product->ratings as $rating )
+                    <div>
+                        rating: {{$rating->rating}}
+                        review: {{$rating->review}}
+                        User: {{$rating->user->name}}
+                    </div>
+                        
+                    @endforeach
+
+                </div> --}}
                
             </div>
         </div>
     </div>
    
-
+    {{-- Related Products --}}
     <div class="px-44 my-10">
         <h2 class="font-bold text-2xl">Related Product</h2>
 

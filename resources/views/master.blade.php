@@ -373,8 +373,7 @@ class="bg-neutral-100 text-center text-neutral-600 dark:bg-neutral-600 dark:text
           >Profile</a>
       </p>
       <p class="mb-4">
-        <a href="#" class="text-neutral-600 dark:text-neutral-200"
-          >react</a>
+        <a href="{{ route('aboutus') }}">About Us</a>
       </p>
       <p class="mb-4">
         <a href="#!" class="text-neutral-600 dark:text-neutral-200"

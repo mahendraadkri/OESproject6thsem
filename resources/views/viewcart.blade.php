@@ -14,17 +14,17 @@
 
 <body>
   <div class="h-screen bg-gray-100 pt-20">
-    <h1 class="mb-10 text-center text-2xl font-bold">Cart Items</h1>
+    <h1 class="mb-10 text-center text-2xl font-bold">Items in Cart</h1>
     <div class="mx-auto max-w-5xl justify-center px-6 md:flex md:space-x-6 xl:px-0">
       <div class="rounded-lg md:w-2/3">
         <div class="grid grid-cols-2 gap-5 px-24">
             @foreach ($carts as $cart)
-                <div class="flex bg-gray-100 my-5 rounded shadow">
-                    <img src="{{asset('images/products/'.$cart->product->photopath)}}" class="h-32 w-44 object-cover shadow-lg my-2">
-                    <div class="px-4 py-1">
-                        <h2 class="text-2xl font-bold">{{$cart->product->name}}</h2>
-                    </div>
+            <div class="flex bg-gray-100 my-5 rounded shadow">
+              <a href="{{route('viewproduct',$cart->product->id)}}"><img src="{{asset('images/products/'.$cart->product->photopath)}}" class="h-32 w-44 object-cover shadow-lg my-2"></a>
+                <div class="px-4 py-1">
+                    <h2 class="text-2xl font-bold">{{$cart->product->name}}</h2>
                 </div>
+            </div>
             @endforeach
             </div>
       </div>

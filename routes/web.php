@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\AboutUsController;
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\CategoryController;
@@ -47,7 +48,9 @@ Route::post('/userregister',[UserController::class,'userstore'])->name('user.sto
 
 Route::post('/product/orderby',[ProductController::class,'orderby'])->name('product.orderby');
 
- Route::get('search',[PagesController::class,'searchProduct']);
+Route::get('search',[PagesController::class,'searchProduct']);
+
+Route::get('/aboutus',[AboutUsController::class,'index'])->name('aboutus');
 
 
 

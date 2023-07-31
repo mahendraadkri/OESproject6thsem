@@ -13,16 +13,11 @@ class ProductController extends Controller
     /**
      * Display a listing of the resource.
      */
-    public function index($request)
+    public function index()
     {
         $products = Product::all();
 
-          //Get all rating of Products
-          $id = $request->input('product_id');
-          $rating = Rating::with('user')->where('status',1)->where('product_id',$id)->get()->toArray();
-        //   dd($rating); die;
-
-        return view('product.index',compact('products','rating'));
+        return view('product.index',compact('products'));
     }
 
     /**

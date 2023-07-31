@@ -66,7 +66,7 @@ class UserRatingController extends Controller
         }else{
             $rating = new Rating();
             $rating->user_id = Auth::user()->id;
-            $rating->product_id = $data['products_id'];
+            $rating->product_id = $data['product_id'];
             $rating->review = $data['review'];
             $rating->rating = $data['rating'];
             $rating->status = 0;

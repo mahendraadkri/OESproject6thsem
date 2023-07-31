@@ -9,6 +9,8 @@
 <select id="orderby" class="block appearance-none  bg-white border border-gray-300 hover:border-gray-500 px-4 py-2 rounded shadow leading-tight focus:outline-none focus:shadow-outline">
     <option value="asc">Assending Order</option>
     <option value="desc">Descinding Order</option>
+    <option value="new">New to Old</option>
+    <option value="old">Old to New</option>
 </select>
 </div>
 </div>

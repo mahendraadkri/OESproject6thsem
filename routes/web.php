@@ -52,6 +52,9 @@ Route::get('search',[PagesController::class,'searchProduct']);
 
 Route::get('/aboutus',[AboutUsController::class,'index'])->name('aboutus');
 
+//shorting Products
+Route::get('/products/{category}/{orderBy}', [ProductController::class, 'sortProducts'])->name('sortProducts');
+
 
 
 

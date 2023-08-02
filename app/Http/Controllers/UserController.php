@@ -10,6 +10,7 @@ use Illuminate\Support\Facades\Hash;
 use Illuminate\Validation\Rules;
 use Illuminate\Support\Facades\Mail;
 
+
 class UserController extends Controller
 {
 
@@ -24,14 +25,7 @@ class UserController extends Controller
         $categories = Category::orderBy('priority')->get();
         return view('userregister',compact('categories'));
 
-        $data = [
-            'name' => auth()->user()->name,
-            'mailmessage' => 'You have been successfully register',
-    			];
- 		Mail::send('email.register',$data, function ($message){
- 			$message->to(auth()->user()->email)
- 			->subject('You have been successfully register');
- 		});
+       
 
        
          
@@ -39,9 +33,9 @@ class UserController extends Controller
     public function userstore(Request $request)
     {
         $data = $request->validate([
-            'name' => 'required',
-            'phone' => 'required|numeric',
-            'email' => 'required|email:filter',
+            'name' => 'required|alpha|max:255',
+            'phone' => 'required|string|digits:10|starts_with:9',
+            'email' => 'required|email:filter|unique:users,email|max:255',
             'address' => 'required',
             'password' => ['required','confirmed', Rules\Password::defaults()],
         ]);
@@ -53,14 +47,23 @@ class UserController extends Controller
 
        
         return redirect(route('home'));
+        //mail after registration
+        $data = [
+            'name' => auth()->user()->name,
+            'mailmessage' => 'You have been successfully register',
+    			];
+ 		Mail::send('email.register',$data, function ($message){
+ 			$message->to(auth()->user()->email)
+ 			->subject('You have been successfully register');
+ 		});
 
     }
 
     public function update(Request $request, $id)
     {
         $data = $request->validate([
-            'name' => 'required',
-            'phone' => 'required|numeric',
+            'name' => 'required|string|max:255',
+            'phone' => 'required|numeric|max:20',
             'address' => 'required',
             'password' => ['required', 'confirmed', Rules\Password::defaults()],
 

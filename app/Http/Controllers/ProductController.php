@@ -40,8 +40,8 @@ class ProductController extends Controller
             'price' => 'numeric|required',
             'oldprice' => 'numeric|nullable',
             'stock' => 'numeric|required',
-            'description' => 'required',
-            'photopath' => 'required'
+            'description' => 'required|string',
+            'photopath' => 'required|image|mimes:jpeg,png,jpg,gif|max:2048'
         ]);
 
         if($request->hasFile('photopath')){
@@ -125,5 +125,40 @@ class ProductController extends Controller
     public function ratings()
     {
         return $this->hasMany(Rating::class);
+    }
+
+    public function sortProducts(Request $request, $category, $orderBy)
+    {
+        // Validate the orderBy value to avoid any potential security issues
+        $validOrderBy = ['asc', 'desc', 'new', 'old'];
+        if (!in_array($orderBy, $validOrderBy)) {
+            abort(400, 'Invalid sorting order.');
+        }
+
+        // Get the products for the specified category and apply sorting based on the orderBy value
+        $products = Product::where('category_id', $category);
+
+        switch ($orderBy) {
+            case 'asc':
+                $products->orderBy('price', 'asc');
+                break;
+            case 'desc':
+                $products->orderBy('price', 'desc');
+                break;
+            case 'new':
+                $products->orderBy('created_at', 'desc');
+                break;
+            case 'old':
+                $products->orderBy('created_at', 'asc');
+                break;
+            default:
+                // Handle any other cases if needed
+                break;
+        }
+
+        $products = $products->paginate(12); // Assuming 12 products per page, you can adjust this value as needed
+
+        // Assuming you have a 'products' view to display the sorted products
+        return view('categoryproduct', ['products' => $products, 'category' => $category]);
     }
 }

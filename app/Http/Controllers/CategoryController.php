@@ -23,8 +23,8 @@ class CategoryController extends Controller
     {
          //dd($request->name); it print the single data..
         $data = $request->validate([
-            'name'=> 'required',
-            'priority'=>'required|numeric'
+            'name'=> 'required|string|max:255|unique:categories',
+            'priority'=>'required|numeric|min:1|unique:categories,priority'
         ]);
         //dd($data); print data
         Category::create($data);

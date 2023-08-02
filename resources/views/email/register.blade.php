@@ -1,1 +1,14 @@
-<p style="color: black">Congrulations <b>{{$name}}</b> you have Successfully register <b>Online Electronic Store</b>: {{$mailmessage}}</p>
+
+@component('mail::message')
+# Registration Successful
+
+Hello {{ $user->name }},
+
+Congratulations! Your registration has been successful.
+
+Thank you for joining our website.
+
+Best regards,
+The Website Team
+<b>Online Electronic Store</b>
+@endcomponent

@@ -21,8 +21,12 @@
         <td>
             {{$order->order_date}}
         </td>
-        <td>{{$cart->product->price}}</td>
-        <td>{{$order->status}}</td>
+        <td>
+            {{$order->amount}}
+        </td>
+        <td>
+            {{$order->status}}
+        </td>
         
     </tr>
         

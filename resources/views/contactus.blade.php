@@ -20,6 +20,7 @@
                     <div class="form-group mb-6">
                         <input type="text"
                             class="form-control block w-full px-3 py-1.5 text-base font-normal text-gray-700 bg-white bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none" name="name" id="exampleInput7" placeholder="Name">
+                            <x-input-error :messages="$errors->get('name')" class="mt-2" />
                     </div>
                     <div class="form-group mb-6">
                         <input type="email" 
@@ -28,6 +29,7 @@
                     <div class="form-group mb-6">
                         <input type="text" 
                             class="form-control block w-full px-3 py-1.5 text-base font-normal text-gray-700 bg-white bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none" id="phone" placeholder="Mobile No." name="phone">
+                            <x-input-error :messages="$errors->get('phone')" class="mt-2" />
                     </div>
                     <div class="form-group mb-6">
                         <textarea
